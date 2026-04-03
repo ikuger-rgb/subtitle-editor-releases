@@ -1,0 +1,67 @@
+{
+  "name": "subtitle-editor",
+  "productName": "עורך כתוביות",
+  "version": "1.0.0",
+  "description": "עורך כתוביות אוניברסלי עם תמלול אוטומטי",
+  "main": "main.js",
+  "author": {
+    "name": "ikuger-rgb"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build:dir": "electron-builder --win --dir",
+    "publish": "electron-builder --win --publish always"
+  },
+  "build": {
+    "appId": "com.ikuger.subtitle-editor",
+    "productName": "עורך כתוביות",
+    "copyright": "Copyright © 2025 ikuger-rgb",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**/*",
+      "assets/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "עורך כתוביות",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
+      "deleteAppDataOnUninstall": false,
+      "language": "1037",
+      "artifactName": "subtitle-editor-setup-${version}.exe"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "ikuger-rgb",
+      "repo": "subtitle-editor-releases",
+      "private": false
+    }
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "electron": "^41.1.1",
+    "electron-builder": "^26.0.0"
+  }
+}
